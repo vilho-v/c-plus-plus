@@ -1,6 +1,7 @@
 #include <iostream>
 #include <windows.h>
 
+
 using namespace std;
 
 
@@ -23,15 +24,16 @@ string pos[] = {
 	"yep",
 	"y",
 	"yes",
-	"1"
+	"1",
+	"j"
 };
 string neg[] = {
-		"ei",
-		"0",
-		"no",
-		"n",
-		"en",
-		"e"
+	"ei",
+	"0",
+	"no",
+	"n",
+	"en",
+	"e"
 };
 
 int StringThing(string);
@@ -56,6 +58,16 @@ start:
 
     cin >> luku;
 
+	// type mismatch
+	if (cin.fail())
+	{
+		cout << "NUMERONA\n";
+		cin.clear();
+		cin.ignore(10000, '\n');
+		goto start;
+	}
+
+
 	if (luku == 1)
 	{
 		Nimi();
@@ -66,33 +78,32 @@ start:
 	}
 	else if (luku == 3)
 	{
-		cout << "Tehtävä 3";
+		HemoglobinThing();
 	}
 	else if (luku == 4)
 	{
-		cout << "Tehtävä 4";
+		YearThing();
 	}
 	else if (luku == 5)
 	{
-		cout << "Tehtävä 5";
+		DivisionByThree();
 	}
 	else if (luku == 6)
 	{
-		cout << "Tehtävä 6";
+		Inches();
 	}
 	else if (luku == 7)
 	{
-		cout << "Tehtävä 7";
+		GallonThing();
 	}
 
-	// start over if input is wrong somehow
+	// fucked number input
 	else
 	{
-		// put these here cuz cin shits itself and stopts taking inputs if theres a type mismatch
-		cin.clear();
-		cin.ignore();
 
 		cout << "anna ihan vaan luku 1-7\n";
+		cin.clear();
+		cin.ignore(10000, '\n');
 		goto start;
 	}
 
@@ -161,7 +172,7 @@ void PintaAla()
 
 }
 
-
+// 3
 void HemoglobinThing()
 {
 	string input;
@@ -192,47 +203,199 @@ void HemoglobinThing()
 
 			cin >> fInput;
 
+			if (cin.fail())
+			{
+				cout << "NUMERONA\n";
+				cin.clear();
+				cin.ignore(10000, '\n');
+				continue;
+			}
 			// go thru all possible answers and catch invalid non numeral response
 
 			// too low
 			if (fInput < mlow)
 			{
-
+				cout << "hemoglobiiniarvosi " << fInput << " on aivan liian matala!! \n" << "alaraja " << mlow << "\n";
+				return;
 			}
 			// too high
 			else if(fInput > mhigh)
 			{
 				cout << "hemoglobiiniarvosi " << fInput << " on aivan liian korkea!! \n" << "yläraja " << mhigh << "\n";
+				return;
 			}
 			// just right
-			else if(mlow < fInput < mhigh)
+			else
 			{
 				cout << "hemoglobiiniarvosi " << fInput << " on sopiva !! \n";
 				return;
-			}
-			// invalid
-			else
-			{
-				cin.clear();
-				cin.ignore();
-				continue;
 			}
 
 			
 		}
 	else if (input == "f")
 	{
+		while (true)
+		{
+			cout << "Nyt anna hemoglobiiniarvosi \n";
+
+			cin >> fInput;
+
+			if (cin.fail())
+			{
+				cout << "NUMERONA\n";
+				cin.clear();
+				cin.ignore(10000, '\n');
+				continue;
+			}
+
+			// go thru all possible answers and catch invalid non numeral response
+
+			// too low
+			if (fInput < flow)
+			{
+				cout << "hemoglobiiniarvosi " << fInput << " on aivan liian matala!! \n" << "alaraja " << flow << "\n";
+				return;
+			}
+			// too high
+			else if (fInput > fhigh)
+			{
+				cout << "hemoglobiiniarvosi " << fInput << " on aivan liian korkea!! \n" << "yläraja " << fhigh << "\n";
+				return;
+			}
+			// just right
+			else
+			{
+				cout << "hemoglobiiniarvosi " << fInput << " on sopiva !! \n";
+				return;
+			}
+		}
 
 	}
+
+}
+
+
+void YearThing()
+{
+	cout << "okkkk anna vuosiluku niin kerron onko se karkausvuosi \n";
+	int year = 0;
+
+	while (true)
+	{
+		// git th' ny year value
+		cin >> year;
+
+		// fail army
+		if (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(1000, '\n');
+
+			cout << "anna VALIDI vuosiluku (NUMERONA)\n";
+		}
+
+		// gtfo out of loop when result is an integer (doesnt cause a fail)
+		else
+
+		{
+			break;
+		}
+	}
+
+	// ALL desired results are divisible by four
+	if (year % 4 == 0)
+	{
+		// only desired hundreds are divisible by 400 also. discard others
+		if (year % 100 == 0)
+		{
+			if (year % 400 == 0)
+			{
+				cout << "vuosi " << year << " on karkausvuosi !!!!\n";
+				return;
+			}
+			else
+			{
+				cout << "vuosi " << year << " EI OLE karkausvuosi !!!!\n";
+				return;
+			}
+
+		}
+		// divisible by 4 non hundred response; always a leap year
+		else
+		{
+			cout << "vuosi " << year << " on karkausvuosi !!!!\n";
+			return;
+		}
+	}
+	else
+	{
+		cout << "vuosi " << year << " EI OLE karkausvuosi !!!!\n";
+		return;
+	}
+		
 	
+}
 
 
+void DivisionByThree()
+{
+	int i = 0;
+	while (i < 1000)
+	{
+		i++;
+		if (i % 3 == 0)
+		{
+			cout << i << " ";
+		}
+	}
+
+	cout << "\ntäs on kaikki kolmella jaolliset luvut 0-1000 ok \n";
 }
 
 
 
 
-// helpr functions
+void Inches()
+{
+	float conversionRate = 2.54;
+	float inch;
+	cout << "laita joku luku JENKKI tuumissa niin muutan ne senteiksi. negatiivinen luku poistuu ohjelmasta \n";
+	while (true)
+	{
+		cin >> inch;
+
+		// fail case
+		if (cin.fail())
+		{
+			cout << "anna joku validi NUMERO\n";
+			cin.clear();
+			cin.ignore(1000, '\n');
+		}
+
+		// epic win case
+		else if (inch >= 0)
+		{
+			cout << inch << " TUUMAA on " << (inch * conversionRate) << " cm\n";
+		}
+
+		// exit case
+		else
+		{
+			cout << "ok :/ \n";
+			break;
+		}
+	}
+}
+
+void GallonThing()
+{
+
+}
+
+/// helpr functions
+
+
 int StringThing(string input)
 {
 	for (int i = 0; i < size(pos); i++)
