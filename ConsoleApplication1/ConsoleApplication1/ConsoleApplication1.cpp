@@ -143,6 +143,7 @@ start:
 
 
 // 1
+// prints out what u type in and says hi also
 void Nimi()
 {
 	string name;
@@ -155,6 +156,7 @@ void Nimi()
 
 
 // 2
+// multiplication
 void PintaAla()
 {
 	cout << "Pinta-ala laskuri \n";
@@ -173,6 +175,8 @@ void PintaAla()
 }
 
 // 3
+// lets u know if ur hemoglobin value is too high or low
+// discriminates by gender the old fashion way
 void HemoglobinThing()
 {
 	string input;
@@ -276,6 +280,7 @@ void HemoglobinThing()
 }
 
 
+// this tells u if a year is a leap year or not
 void YearThing()
 {
 	cout << "okkkk anna vuosiluku niin kerron onko se karkausvuosi \n";
@@ -297,7 +302,6 @@ void YearThing()
 
 		// gtfo out of loop when result is an integer (doesnt cause a fail)
 		else
-
 		{
 			break;
 		}
@@ -338,6 +342,9 @@ void YearThing()
 }
 
 
+
+
+// prints out numbers divisible by trois
 void DivisionByThree()
 {
 	int i = 0;
@@ -355,7 +362,7 @@ void DivisionByThree()
 
 
 
-
+// converts inches into centimetres
 void Inches()
 {
 	float conversionRate = 2.54;
@@ -363,6 +370,7 @@ void Inches()
 	cout << "laita joku luku JENKKI tuumissa niin muutan ne senteiksi. negatiivinen luku poistuu ohjelmasta \n";
 	while (true)
 	{
+		cout << "laita luku -->>>>>> ";
 		cin >> inch;
 
 		// fail case
@@ -388,14 +396,48 @@ void Inches()
 	}
 }
 
+
+// converts gallons into litres
 void GallonThing()
 {
+	float conversionRate = 3.785;
+	float galon;
+	cout << "anna galloonaluku niin laitan että monta litraa se vastaa. neg. luku poistuu\n";
+	while (true)
+	{
+		cout << "laita luku -->>>>>> ";
+		cin >> galon;
 
+		// fail case
+		if (cin.fail())
+		{
+			cout << "anna joku validi galloonaNUMERO\n";
+			cin.clear();
+			cin.ignore(1000, '\n');
+		}
+
+		// epic win case
+		else if (galon >= 0)
+		{
+			cout << galon << " GALLOONAA on " << (galon * conversionRate) << " litraa\n";
+		}
+
+		// exit case
+		else
+		{
+			cout << "ok :p\n";
+			break;
+		}
+	}
 }
+
+
+
+
 
 /// helpr functions
 
-
+// this parses a response and deems it positive or negative n returns an int 
 int StringThing(string input)
 {
 	for (int i = 0; i < size(pos); i++)
@@ -417,6 +459,7 @@ int StringThing(string input)
 // runs once
 void InitThing()
 {
+	// font fix in console
 	SetConsoleOutputCP(CP_UTF8);
 }
 
