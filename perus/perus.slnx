@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="perus.vcxproj" Id="17fee70a-94d7-4546-90ed-58bdbc8c5ee5" />
+</Solution>
