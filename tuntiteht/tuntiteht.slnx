@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="tuntiteht/tuntiteht.vcxproj" Id="b8840c61-31f7-4488-8b67-d30c9b16906c" />
+</Solution>
